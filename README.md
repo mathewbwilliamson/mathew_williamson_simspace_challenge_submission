@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# Simspace Challenge Submission by Matt Williamson
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This project takes in data from a superhero database and it gives in a nice UI. It shows the superheros as a list, but also as a responsive grid including their images.
 
-In the project directory, you can run:
+Hosted on Netlify at https://superhero-database-matt.netlify.app/
 
-### `yarn start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Clone the repo: git clone git@github.com:mathewbwilliamson/FIX.git
+2. Change directory to `mathew_williamson_simspace_challenge_submission`.
+3. Install the packages with `yarn install`.
+4. Start the app in your local environment: `yarn start`.
+5. The app should open automatically, but if it's doesn't, open `http://localhost:3000` in your browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Checklist of Requirements
 
-### `yarn test`
+Create a single-page application that allows a user to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [ ] Search for a specific breed of dog.
+  - [ ] If the search field is empty, display a list of the first 12 breeds available, sorted alphabetically.
+  - [ ] If the search field does not match any breeds, display a message that no breeds were found.
+  - [ ] While the list of breeds is loading, display a message that the breeds are loading.
+- [ ] Select one of the matching results and view pictures of that breed.
+  - [ ] When a result is selected, mark the selection visually as being active.
+  - [ ] While the images of the selected breed are loading, display a message that the images are loading.
+- [ ] See the attached screenshots for the UI design to follow.
+- [ ] Use the Dog API as your data source.
 
-### `yarn build`
+## Basic Overview
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Items of Note
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- The data is not hardcoded, I load it using a custom hook to fetch the data.
+- There is one custom hook in order to fetch the data. It is reusable and it includes support for tracking loading and errors, along with the data itself.
+- The architecture/folder structure is one that I've used for a while. It has the following structure:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - assets: Where any assets go. None for this project.
+  - components: Any components that are not page components go here. This includes reusable components and more bespoke components.
+  - customHooks: Any and all custom hooks will go here. Not every project I build will have these.
+  - pages: For the pages themselves, usually in apps that have React Router or NextJS, but I still include it here for organization's sake.
+  - services: Generally I keep my apiClient here, but also anything that might need 3rd party configuration would go here. I discuss the apiClient below. Also, every imported environment variable will be in the `index.ts` file. I do this so that all of these imports are in one place.
+  - styles: In this app, I have chosen to do a light version of an Inverted CSS Triangle system.
+  - types: Where app-level types and enums go.
 
-### `yarn eject`
+- My apiClient in the apiService.ts file is where all my Axios requests go through. Many people do not create an apiClient as the documentation suggests, which eventually can lead to many apiClients being created. Instantiating an apiClient as in the documentation solves that problem as there will only be one.
+- Lighthouse score
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Future Improvements
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Parting Words
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Thank you to my code reviewers for taking valuable time out of their day to review my project.
 
-## Learn More
+All the best,
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Matt Williamson

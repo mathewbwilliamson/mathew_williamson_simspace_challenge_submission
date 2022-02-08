@@ -1,0 +1,32 @@
+import React from "react";
+import { apiClient } from "../services/apiClient";
+
+export function useFetchData<T>(endpoint: string) {
+  const [data, setData] = React.useState<T>();
+  const [error, setError] = React.useState();
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const { data: response } = await apiClient.get<T>(endpoint);
+
+        setData(response);
+      } catch (err) {
+        console.error(err);
+        setError(err as any);
+      }
+      setIsLoading(false);
+    };
+
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return {
+    data,
+    isLoading,
+    error,
+  };
+}
