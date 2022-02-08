@@ -1,5 +1,5 @@
 import React from "react";
-import { Dogs } from "./pages/dogs";
+import { Dogs } from "./pages/Dogs";
 
 function App() {
   return (
