@@ -1,10 +1,14 @@
 import React from "react";
-import { Dogs } from "./pages/Dogs";
+import { Header } from "./components/Header/Header";
+import { DogsPage } from "./pages/DogsPage";
 
 function App() {
   return (
     <div className="App">
-      <Dogs />
+      <Header />
+      <main>
+        <DogsPage />
+      </main>
     </div>
   );
 }
